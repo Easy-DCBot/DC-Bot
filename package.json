@@ -1,0 +1,26 @@
+{
+  "name": "dc-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Easy-DCBot/DC-Bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Easy-DCBot/DC-Bot/issues"
+  },
+  "homepage": "https://github.com/Easy-DCBot/DC-Bot#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
