@@ -83,37 +83,42 @@ bot.on('error', () => {
 
 bot.on('message', msg => {
     console.log('received msg');
+    if (msg.author.bot) {
+        console.log('msg send by bot');
+    }
+    else {
+        var requestbody = {
+            Bot_id: '1',
+            Command: msg.content
+        }
+        var config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': token
+            }
+        }
+        axios.post('http://localhost:3000/BotCommand', JSON.stringify(requestbody), config)
+            .then((result) => {
+                console.log(result.data);
+                var resultstring = "" + result.data;
+                if (resultstring === "0") {
+                    console.log(result.data);
+                }
+                else {
+                    msg.channel.send(result.data);
+                }
+            })
+    }
 
-    var requestbody = {
-        Bot_id : '1',
-        Command : msg.content
-    }
-    var config = {
-        headers: {
-            'Content-Type': 'application/json',
-            'x-access-token': token
-        }
-    }
-    axios.post('http://localhost:3000/BotCommand', JSON.stringify(requestbody), config)
-    .then((result) => {
-        console.log(result.data);
-        var resultstring = "" + result.data;
-        if (resultstring === "0") {
-            console.log(result.data);
-        }
-        else {
-            msg.channel.send(result.data);
-        }
-    })
 });
 
-bot.login('');//Token in here
+bot.login('NjY0NDQ1ODA0MjA3MDEzOTA5.XiFaeQ.Uv83Agsp3soJ4PLPqZPEhOKqSEM');//Token in here
 
 function getToken() {
     return new Promise(res => {
         var requestbody = {
-            username: '', //username in here
-            password: '' //password in here
+            username: 'Admin', //username in here
+            password: 'universal' //password in here
         }
 
         var config = {
