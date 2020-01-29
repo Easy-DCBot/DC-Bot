@@ -6,7 +6,9 @@ var axios = require('axios');
 var qs = require('querystring');
 var FormData = require('form-data');
 var data = new FormData();
-var loginconfig = require('./config.json')
+var fs = require('fs');
+
+var loginconfig = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 
 
 
@@ -114,13 +116,13 @@ bot.on('message', msg => {
 
 });
 
-bot.login('');//Token in here
+bot.login(loginconfig.token);//Token in here
 
 function getToken() {
     return new Promise(res => {
         var requestbody = {
-            username: 'Admin', //username in here
-            password: 'universal' //password in here
+            username: loginconfig.username, //username in here
+            password: loginconfig.password //password in here
         }
 
         var config = {
