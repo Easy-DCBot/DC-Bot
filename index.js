@@ -6,6 +6,7 @@ var axios = require('axios');
 var qs = require('querystring');
 var FormData = require('form-data');
 var data = new FormData();
+var loginconfig = require('./config.json')
 
 
 
@@ -81,6 +82,7 @@ bot.on('error', () => {
     console.log('Please insert token or look out for another reason of the error');
 })
 
+
 bot.on('message', msg => {
     console.log('received msg');
     if (msg.author.bot) {
@@ -112,7 +114,7 @@ bot.on('message', msg => {
 
 });
 
-bot.login('NjY0NDQ1ODA0MjA3MDEzOTA5.XiFaeQ.Uv83Agsp3soJ4PLPqZPEhOKqSEM');//Token in here
+bot.login('');//Token in here
 
 function getToken() {
     return new Promise(res => {
